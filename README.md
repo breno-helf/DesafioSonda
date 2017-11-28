@@ -12,5 +12,8 @@ The assumptions made were:
     - All the occupied positions are invalid (i.e ignored)
 
     - All the positions outside the grid are invalid (i.e ignored)
-    
+
+
+The additional features added were min_dist between a robot and a position and a function to print the grid.
+      
 PS: "in" file is the default input

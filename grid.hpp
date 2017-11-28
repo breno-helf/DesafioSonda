@@ -22,6 +22,11 @@ class Grid {
       Sets position x, y to 1 (which means occupied position)
     */
     void set_position(int x, int y);
+
+    /*
+      Print the grid
+    */
+    void print_grid();
  private:
     vector< vector <int> > matrix;
 };

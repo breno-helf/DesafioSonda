@@ -29,3 +29,12 @@ void Grid::set_position(int x, int y) {
 	this->matrix[x][y] = 1;
     }
 }
+
+void Grid::print_grid() {
+    for (int i = 0; i < n; i++) {
+	for (int j = 0; j < m; j++) {
+	    cout << this->matrix[i][j] << ' ';
+	}
+	cout << '\n';
+    }
+}

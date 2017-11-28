@@ -52,14 +52,16 @@ int main() {
     ans.push_back(Robot(1, 3, 0));
     ans.push_back(Robot(5, 1, 1));
     dist.push_back(8);
-    dist.push_back(9)
+    dist.push_back(9);
     for (int i = 0; i < 2; i++) {
 	Robot R = v[i];
 	R.execute_commands(G, str[i]);
 	assert(R == ans[i]);
 	assert(R.min_dist(G, R.x, R.y, R.d) == 0);
-	assert(R.min_dist(G, R.x, R.y, R.d) == dist[i]);
+	assert(R.min_dist(G, 0, 0, 0) == dist[i]);
     }
-        
+
+    G.print_grid();
+    
     return 0;
 }
