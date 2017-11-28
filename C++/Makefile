@@ -1,4 +1,4 @@
-FLAGS = -Wall -Wshadow -std=c++11
+FLAGS = -Wall -Wshadow -std=c++11 -g
 
 OBJS = sonda.o robot.o grid.o
 
