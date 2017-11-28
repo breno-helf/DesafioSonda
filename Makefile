@@ -1,12 +1,16 @@
-FLAGS = -Wall -Wshadow
+FLAGS = -Wall -Wshadow -std=c++11
 
 OBJS = sonda.o robot.o grid.o
 
-all: sonda
+all: sonda test
 
 .PHONY: clean
 
 sonda: $(OBJS)
+	g++ $(FLAGS) $^ -o $@
+	make clean
+
+test: test.o robot.o grid.o
 	g++ $(FLAGS) $^ -o $@
 	make clean
 

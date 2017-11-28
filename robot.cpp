@@ -12,10 +12,10 @@ Robot::Robot() {
     this->d = 0;
 }
 
-void Robot::execute_commands(Grid & G, string & commands) {
+void Robot::execute_commands(Grid & G, string & commands) {    
     int dx[] = {0, 1, 0, -1};
     int dy[] = {1, 0, -1, 0};
-    
+
     for (int i = 0; i < (int)commands.size(); i++) {
 	char c = commands[i];
 	if (c == 'L') {
@@ -33,4 +33,40 @@ void Robot::execute_commands(Grid & G, string & commands) {
 	}
     }
     G.set_position(this->x, this->y);
+}
+
+
+int Robot::min_dist(Grid & G, int X, int Y, int D) {
+    int dx[] = {0, 1, 0, -1};
+    int dy[] = {1, 0, -1, 0};
+
+    map<Robot, int> dist;
+    queue<Robot> Q;
+
+    Robot me = *this;
+    Robot finish = Robot(X, Y, D);
+    Q.push(me);
+    dist[me] = 0;
+
+    while (!Q.empty()) {
+	Robot cur = Q.front();
+	Q.pop();
+
+	vector<Robot> nxt;
+	nxt.push_back(Robot(cur.x, cur.y, (cur.d + 3) % 4));
+	nxt.push_back(Robot(cur.x, cur.y, (cur.d + 1) % 4));
+	
+	if (G.valid(cur.x + dx[cur.d], cur.y + dy[cur.d])) {
+	    nxt.push_back(Robot(cur.x + dx[cur.d], cur.y + dy[cur.d], cur.d));
+	} 
+	
+	for (auto& R : nxt) {
+	    if (dist.find(R) == dist.end()) {
+		dist[R] = dist[cur] + 1;
+		if (R == finish) break;
+		Q.push(R);
+	    }
+	}
+    }
+    return dist[finish];    
 }
