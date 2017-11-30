@@ -4,6 +4,8 @@ using System.IO;
 
 public class Sonda
 {
+
+	// Check if a position is valid and empty in a grid
 	public static bool valid(int i, int j, int n, int m, ref int[ , ] matrix) {
 		if (i >= 0 && i <= n && j >= 0 && j <= m) {
 			return (matrix[i, j] == 0);
@@ -35,11 +37,13 @@ public class Sonda
 	     	y = int.Parse(tokens[1]);
 	     	c = char.Parse(tokens[2]);
 
+			// Translate the character into a direction
 	     	if (c == 'N') d = 0;
 	     	else if (c == 'E') d = 1;
 	     	else if (c == 'S') d = 2;
 	     	else d = 3;
 
+			// Execute the command list
 	     	string commands = Console.ReadLine();
 	     	foreach (char cur in commands.ToCharArray()) {
 	     		if (cur == 'L') d = (d + 3) % 4;
@@ -54,6 +58,7 @@ public class Sonda
 
 	     	Matrix[x, y] = 1;
 
+			// Translate a charackter back into a direction
 	     	if (d == 0) c = 'N';
 	     	else if (d == 1) c = 'E';
 	     	else if (d == 2) c = 'S';
