@@ -1,5 +1,5 @@
 # DesafioSonda
-This is a challenge proposed by Cappta
+This is a challenge proposed by Cappta. You can see it [here](https://gist.github.com/rmterra/31f2b4f589250839550f685d8873d935)
 
 - To compile the program just run "make sonda".
 
